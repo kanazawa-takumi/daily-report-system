@@ -52,7 +52,7 @@ public class Employee {
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
 
     @Column(name = "delete_flag", nullable = false)
