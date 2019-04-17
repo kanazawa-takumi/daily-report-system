@@ -114,13 +114,13 @@ select {
     width: 36%;
     padding-right: 3%;
     text-align: right;
-    display: inline blick;
+    display: inline-block;
 }
 
 #header a {
     color: #eeeeee;
 }
 
-#h1 a{
+h1 a{
     color: #eeeeee;
 }
