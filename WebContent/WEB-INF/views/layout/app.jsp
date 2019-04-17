@@ -30,7 +30,7 @@
             <div id="content">
                 ${param.content}
             </div>
-            <div id ="footer">
+            <div id="footer">
                 by Taro Kirameki.
             </div>
         </div>
