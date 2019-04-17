@@ -11,7 +11,7 @@
     <body>
         <div id="wrapper">
             <div id="header">
-                <div id=header_menu">
+                <div id="header_menu">
                     <h1><a href="<c:url value='/' />">日報管理システム</a></h1>&nbsp;&nbsp;&nbsp;
                     <c:if test="${sessionScope.login_employee != null}">
                         <c:if test="${sessionScope.login_employee.admin_flag == 1}">
