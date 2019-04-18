@@ -57,7 +57,7 @@ public class ReportsUpdateServlet extends HttpServlet {
 
                 request.getSession().setAttribute("flush", "更新が完了しました。");
                 request.getSession().removeAttribute("report_id");
-                response.sendRedirect(request.getContextPath() + "/report/index");
+                response.sendRedirect(request.getContextPath() + "/reports/index");
             }
         }
     }
