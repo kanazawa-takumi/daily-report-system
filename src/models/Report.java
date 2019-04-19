@@ -33,14 +33,13 @@ import javax.persistence.Table;
             name = "getMyReportsCount",
             query = "SELECT COUNT(r) FROM Report AS r WHERE r.employee = :employee"
             )
-
 })
 @Entity
 public class Report {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "employee_id", nullable = false)
@@ -63,11 +62,11 @@ public class Report {
     private Timestamp updated_at;
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
     public Employee getEmployee() {
