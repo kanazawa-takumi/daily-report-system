@@ -28,11 +28,20 @@ public class EmployeesShowServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
 
         Employee e = em.find(Employee.class, Integer.parseInt(request.getParameter("id")));
-
+        Employee l = (Employee)request.getSession().getAttribute("login_employee");
+        Long followFlag = em.createNamedQuery("isFollowed", Long.class).setParameter("followee", e).setParameter("follower", l).getSingleResult();
+        Long followCount = em.createNamedQuery("getEmployeeFollowsCount", Long.class).setParameter("employee", e).getSingleResult();
         em.close();
 
+        request.setAttribute("follow_flag", followFlag);
+        request.setAttribute("follow_count", followCount);
         request.setAttribute("employee", e);
+        request.setAttribute("login_employee", l);
         request.setAttribute("_token", request.getSession().getId());
+        if(request.getSession().getAttribute("flush") != null){
+            request.setAttribute("flush", request.getSession().getAttribute("flush"));
+            request.getSession().removeAttribute("flush");
+        }
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/employees/show.jsp");
         rd.forward(request, response);

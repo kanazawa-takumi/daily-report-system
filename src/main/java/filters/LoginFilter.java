@@ -40,7 +40,7 @@ public class LoginFilter implements Filter {
                     ((HttpServletResponse)response).sendRedirect(context_path + "/login");
                     return;
                 }
-                if(servlet_path.matches("/employees.*") && e.getAdmin_flag() == 0){
+                if(servlet_path.matches("/employees.edit")&& e.getAdmin_flag() == 0){
                     ((HttpServletResponse)response).sendRedirect(context_path + "/");
                     return;
                 }

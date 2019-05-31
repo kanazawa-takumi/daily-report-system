@@ -6,6 +6,7 @@
 
         <form method="POST" action="<c:url value='/employees/create' />">
             <c:import url="_form.jsp" />
+            <button type="submit">作成</button>
         </form>
 
         <p><a href="<c:url value='/employees/index' />">一覧に戻る</a></p>

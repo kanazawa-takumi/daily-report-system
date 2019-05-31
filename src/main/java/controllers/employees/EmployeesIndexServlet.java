@@ -1,6 +1,7 @@
 package controllers.employees;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -34,12 +35,23 @@ public class EmployeesIndexServlet extends HttpServlet {
         }catch(NumberFormatException e){}
         List<Employee> employees = em.createNamedQuery("getAllEmployees", Employee.class).setFirstResult(15*(page-1)).setMaxResults(15).getResultList();
         long employees_count = (long)em.createNamedQuery("getEmployeesCount", Long.class).getSingleResult();
+        Employee l = (Employee)request.getSession().getAttribute("login_employee");
+        ArrayList<Long> followFlags = new ArrayList<Long>();
+        for(Employee e : employees) {
+            followFlags.add(em.createNamedQuery("isFollowed", Long.class)
+                                                .setParameter("followee", e)
+                                                .setParameter("follower", l)
+                                                .getSingleResult());
+        }
 
         em.close();
 
         request.setAttribute("employees", employees);
         request.setAttribute("employees_count", employees_count);
         request.setAttribute("page", page);
+        request.setAttribute("follow_flags", followFlags);
+        request.setAttribute("login_employee", l);
+        request.setAttribute("_token", request.getSession().getId());
         if(request.getSession().getAttribute("flush") != null){
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
             request.getSession().removeAttribute("flush");

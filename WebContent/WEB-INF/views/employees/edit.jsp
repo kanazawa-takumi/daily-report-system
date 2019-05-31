@@ -8,6 +8,7 @@
                 <p>(パスワードは変更する場合のみ入力してください)</p>
                 <form method="POST" action="<c:url value='/employees/update' />">
                     <c:import url="_form.jsp" />
+                    <button type="submit">編集</button>
                 </form>
 
                 <p><a href="#" onclick="confirmDestroy();">この従業員情報を削除する</a></p>
